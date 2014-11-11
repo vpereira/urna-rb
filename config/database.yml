@@ -1,0 +1,4 @@
+# SQLite version 3.x
+development:
+  adapter: jdbcsqlite3
+  database: db/development.sqlite3

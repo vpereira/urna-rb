@@ -1,0 +1,22 @@
+.base_botoes {
+    -fx-alignment: CENTER;
+    -fx-background-radius: 5,4,3,5;
+    -fx-border-radius: 5,4,3,5;
+    -fx-font-size:15px;
+}
+.botoes_numeros {
+    -fx-text-fill: white;
+    -fx-font-weight:bold;
+    -fx-font-size:25px;
+    -fx-background-color: #000;
+    -fx-alignment: CENTER;
+    -fx-background-radius: 5,4,3,5;
+    -fx-border-radius: 5,4,3,5;
+    -fx-border-color:#fff;
+}
+
+.split_pane_botoes {
+    -fx-background-color:  #44413d;
+}
+
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="781.0" stylesheets="@css/button_teclado.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="327.0">
+         <children>
+            <Label layoutX="14.0" layoutY="29.0" text="MEU VOTO PARA" />
+            <Label fx:id="cargo_label" layoutX="14.0" layoutY="54.0" text="DEPUTADO FEDERAL">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="120.0" fitWidth="118.0" layoutX="274.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/pol1.png" />
+               </image>
+            </ImageView>
+            <HBox fx:id="input_hbox" layoutX="89.0" layoutY="190.0" prefHeight="25.0" prefWidth="197.0" spacing="5.0">
+               <children>
+                  <TextField fx:id="input_1" layoutX="89.0" layoutY="190.0" prefHeight="25.0" prefWidth="30.0" />
+                  <TextField fx:id="input_2" layoutX="127.0" layoutY="190.0" prefHeight="25.0" prefWidth="30.0" />
+               </children>
+            </HBox>
+            <Label layoutX="14.0" layoutY="195.0" text="Numero" />
+            <Label layoutX="14.0" layoutY="239.0" text="Nome" />
+            <Label layoutX="14.0" layoutY="274.0" text="Partido" />
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="412.0" styleClass="split_pane_botoes" stylesheets="@css/button_teclado.css">
+         <children>
+            <HBox layoutX="2.0" prefHeight="100.0" prefWidth="385.0">
+               <children>
+                  <ImageView fitHeight="133.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/tse-logo.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </HBox>
+            <VBox layoutX="253.0" layoutY="140.0" prefHeight="200.0" prefWidth="74.0" spacing="18.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#click_3" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="3" />
+                  <Button mnemonicParsing="false" onAction="#click_6" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="6" />
+                  <Button mnemonicParsing="false" onAction="#click_9" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="9" />
+               </children>
+               <padding>
+                  <Insets left="25.0" top="8.0" />
+               </padding></VBox>
+            <VBox layoutX="146.0" layoutY="140.0" prefHeight="248.0" prefWidth="74.0" spacing="18.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#click_2" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="2" />
+                  <Button mnemonicParsing="false" onAction="#click_5" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="5" />
+                  <Button mnemonicParsing="false" onAction="#click_8" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="8" />
+                  <Button mnemonicParsing="false" onAction="#click_0" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="0" textOverrun="WORD_ELLIPSIS" />
+               </children>
+               <padding>
+                  <Insets left="13.0" top="8.0" />
+               </padding></VBox>
+            <VBox layoutX="23.0" layoutY="140.0" prefHeight="200.0" prefWidth="74.0" spacing="18.0">
+               <padding>
+                  <Insets left="10.0" top="8.0" />
+               </padding>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#click_1" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="1" textOverrun="WORD_ELLIPSIS" />
+                  <Button mnemonicParsing="false" onAction="#click_4" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="4" />
+                  <Button mnemonicParsing="false" onAction="#click_7" prefHeight="35.0" prefWidth="47.0" styleClass="botoes_numeros" stylesheets="@css/button_teclado.css" text="7" />
+               </children></VBox>
+           <HBox layoutY="382.0" prefHeight="82.0" prefWidth="385.0" spacing="30.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#click_branco" prefHeight="49.0" prefWidth="87.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;" styleClass="base_botoes" stylesheets="@css/button_teclado.css" text="BRANCO">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#click_corrige" prefHeight="40.0" prefWidth="104.0" style="-fx-background-color: #ff7d05; -fx-border-color: #000000;" styleClass="base_botoes" stylesheets="@css/button_teclado.css" text="CORRIGE">
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#click_confirma" prefHeight="52.0" prefWidth="111.0" style="-fx-background-color: #0fe20f; -fx-border-color: #000000;" styleClass="base_botoes" stylesheets="@css/button_teclado.css" text="CONFIRMA">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin></Button>
+               </children>
+               <padding>
+                  <Insets left="10.0" top="20.0" />
+               </padding></HBox>
+         </children>
+         <padding>
+            <Insets left="5.0" />
+         </padding></AnchorPane>
+  </items>
+</SplitPane>
