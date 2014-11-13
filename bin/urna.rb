@@ -1,12 +1,14 @@
 require 'jrubyfx'
 require 'active_record'
+require_relative '../lib/db'
 
-ActiveRecord::Base.establish_connection(YAML::load(File.open('config/database.yml'))['development'])
-ActiveRecord::Base.logger = Logger.new(File.open(File.join('tmp','database.log'), 'a'))
+Urna::Db::init(:config=>'config/database.yml',:env=>'development')
+
 
 require_relative "../app/controllers/urna"
 require_relative "../app/models/cargo"
 
+module Urna
 class Urna <  JRubyFX::Application
 
     def start(args)
@@ -16,7 +18,7 @@ class Urna <  JRubyFX::Application
          end
     end
 end
+end
 
 
-
-Urna.launch
+Urna::Urna.launch

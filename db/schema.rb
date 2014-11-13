@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 2) do
 
   create_table "cargos", force: true do |t|
     t.string  "nome"
     t.integer "digitos"
+    t.integer "numero"
+  end
+
+  create_table "partidos", force: true do |t|
+    t.string  "nome"
+    t.string  "sigla"
+    t.integer "numero"
   end
 
 end
