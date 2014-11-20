@@ -1,13 +1,25 @@
 #!/usr/bin/env ruby
 require 'irb'
+
+
 require 'active_record'
 require_relative '../lib/db'
-
-Urna::Db::init(:config=>'config/database.yml',:env=>'development')
-
-
 require_relative "../app/controllers/urna"
 require_relative "../app/models/cargo"
 
 
-IRB.start
+
+Urna::Db::init(:config=>'config/database.yml',:env=>'development')
+
+IRB.setup(nil)
+irb = IRB::Irb.new
+IRB.conf[:MAIN_CONTEXT] = irb.context
+irb.context.evaluate("require 'irb/completion'", 0)
+
+trap("SIGINT") do
+  irb.signal_handle
+end
+
+catch(:IRB_EXIT) do
+  irb.eval_input
+end
