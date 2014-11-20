@@ -1,9 +1,10 @@
 class CreateCargos < ActiveRecord::Migration
     def change
-        create_table :cargos  do |t|
+        create_table :cargos, :id=>false  do |t|
             t.string :nome
             t.integer :digitos
-            t.integer :numero, primary_key: true
+            t.integer :numero
+            t.primary_key :numero
         end
     end
 end

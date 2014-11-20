@@ -21,10 +21,9 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer "numero"
   end
 
-  create_table "cargos", force: true do |t|
+  create_table "cargos", primary_key: "numero", force: true do |t|
     t.string  "nome"
     t.integer "digitos"
-    t.integer "numero"
   end
 
   create_table "partidos", force: true do |t|
