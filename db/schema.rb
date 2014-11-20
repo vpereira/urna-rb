@@ -13,12 +13,11 @@
 
 ActiveRecord::Schema.define(version: 4) do
 
-  create_table "candidatos", force: true do |t|
+  create_table "candidatos", primary_key: "numero", force: true do |t|
     t.string  "nome"
     t.integer "numero_partido"
     t.integer "numero_cargo"
     t.string  "caminho_photo"
-    t.integer "numero"
   end
 
   create_table "cargos", primary_key: "numero", force: true do |t|
@@ -26,10 +25,9 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer "digitos"
   end
 
-  create_table "partidos", force: true do |t|
-    t.string  "nome"
-    t.string  "sigla"
-    t.integer "numero"
+  create_table "partidos", primary_key: "numero", force: true do |t|
+    t.string "nome"
+    t.string "sigla"
   end
 
   create_table "votacoes", force: true do |t|

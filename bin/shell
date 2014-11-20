@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+require 'irb'
+require 'active_record'
+require_relative '../lib/db'
+
+Urna::Db::init(:config=>'config/database.yml',:env=>'development')
+
+
+require_relative "../app/controllers/urna"
+require_relative "../app/models/cargo"
+
+
+IRB.start
