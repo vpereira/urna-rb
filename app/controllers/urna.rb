@@ -4,7 +4,7 @@ fxml_root File.join(File.dirname(__FILE__),"..","views")
 class UrnaController
     include JRubyFX::Controller
     fxml "urna.fxml"
-
+    NUMERO_MINIMO_DIGITOS = 2 # o numero minimo para um cargo sao 2 digitos.
     def initialize
         # TODO
         # it will be dynamic added
@@ -13,13 +13,9 @@ class UrnaController
         @input = 1 #first input
         @max_input = @cargo.digitos
         @min_input = 1
-        if @cargo.digitos > 2
-            (@cargo.digitos - 2+1).upto(@cargo.digitos+1).each do |i|
-                t = text_field()
-                t.set_on_key_typed do |evt|
-                  # get all text_field values
-                  puts self.instance_variables
-                end
+        if @cargo.digitos > NUMERO_MINIMO_DIGITOS
+          (NUMERO_MINIMO_DIGITOS+1).upto(@cargo.digitos).each do |i|
+                t = text_field
                 t.setPrefWidth(30)
                 t.setPrefHeight(30)
                 instance_variable_set("@input_#{i}", t)
@@ -41,36 +37,28 @@ class UrnaController
         i.send(:request_focus)
     end
 
-    def input_back
-        @input-=1 if @input > @min_input
-    end
 
     def input_reset
         @input=1
     end
-    
+
+    #
+    # get the text_field values and transform it to int.
+    # then search in the database for this record
+    #
     def get_inserted_number
-      puts @input
-      puts @max_input
+      #@input_3
+      #@input_2
+      #@input_1
+      num = self.instance_variables.grep(/^@input_/).collect do |i|
+        text_f = self.instance_variable_get(i)
+        text_f.text
+      end
+      num.join.to_i
     end
 
     # TODO
-    # change to the syntax 
-    # on :click_corrige do
-    # ...
-    # end
-    def click_corrige
-        i = self.instance_variable_get("@input_#{@input}")
-        i.send(:text=,"")
-        input_back
-    end
-
-    def input_reset
-        @input=1
-    end
-
-    # TODO
-    # change to the syntax 
+    # change to the syntax
     # on :click_corrige do
     # ...
     # end
@@ -85,6 +73,11 @@ class UrnaController
         define_method("click_#{num}") do
             i = self.instance_variable_get("@input_#{@input}")
             i.send(:text=,num.to_s)
+            input = self.instance_variable_get("@input")
+            # TODO
+            # in the get_inserted_number, call the db, get the
+            # answer and show it
+            puts get_inserted_number if input == @cargo.digitos
             input_next
         end
     end
