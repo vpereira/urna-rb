@@ -12,26 +12,44 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="327.0">
          <children>
-            <Label layoutX="14.0" layoutY="29.0" text="MEU VOTO PARA" />
-            <Label fx:id="cargo_label" layoutX="14.0" layoutY="54.0" text="DEPUTADO FEDERAL">
+            <Label layoutX="14.0" layoutY="14.0" text="MEU VOTO PARA" />
+            <Label fx:id="cargo_label" layoutX="14.0" layoutY="40.0" text="DEPUTADO FEDERAL">
                <font>
                   <Font size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="120.0" fitWidth="118.0" layoutX="274.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="133.0" fitWidth="109.0" layoutX="274.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/pol1.png" />
                </image>
             </ImageView>
-            <HBox fx:id="input_hbox" layoutX="89.0" layoutY="190.0" prefHeight="25.0" prefWidth="197.0" spacing="5.0">
+            <HBox fx:id="input_hbox" layoutX="89.0" layoutY="190.0" prefHeight="32.0" prefWidth="205.0" spacing="5.0">
                <children>
-                  <TextField fx:id="input_1" layoutX="89.0" layoutY="190.0" prefHeight="25.0" prefWidth="30.0" />
-                  <TextField fx:id="input_2" layoutX="127.0" layoutY="190.0" prefHeight="25.0" prefWidth="30.0" />
+                  <TextField fx:id="input_1" layoutX="89.0" layoutY="190.0" prefHeight="30.0" prefWidth="30.0" />
+                  <TextField fx:id="input_2" layoutX="127.0" layoutY="190.0" prefHeight="30.0" prefWidth="30.0" />
                </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </HBox>
-            <Label layoutX="14.0" layoutY="195.0" text="Numero" />
-            <Label layoutX="14.0" layoutY="239.0" text="Nome" />
-            <Label layoutX="14.0" layoutY="274.0" text="Partido" />
+            <VBox layoutX="12.0" layoutY="195.0" spacing="20.0">
+               <children>
+                  <Label layoutX="12.0" layoutY="195.0" styleClass="base" stylesheets="@css/main_dialog.css" text="Numero:" />
+                  <Label layoutX="14.0" layoutY="239.0" styleClass="base" stylesheets="@css/main_dialog.css" text="Nome:" />
+                  <Label layoutX="15.0" layoutY="286.0" styleClass="base" stylesheets="@css/main_dialog.css" text="Partido:" />
+               </children>
+            </VBox>
+            <Pane layoutX="1.0" layoutY="325.0" prefHeight="153.0" prefWidth="386.0" style="-fx-border-color: black; -fx-border-style: solid; -fx-border-width: 5 0 0 0;">
+               <children>
+                  <VBox layoutX="13.98095703125" layoutY="21.0" spacing="5.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="21.0" text="Aperte a Tecla:" />
+                        <Label layoutX="14.0" layoutY="53.0" text="VERDE para CONFIRMAR" />
+                        <Label layoutX="14.0" layoutY="89.0" text="LARANJA para CORRIGIR" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="412.0" styleClass="split_pane_botoes" stylesheets="@css/button_teclado.css">

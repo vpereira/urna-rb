@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 4) do
+
+  create_table "candidatos", force: true do |t|
+    t.string  "nome"
+    t.integer "numero_partido"
+    t.integer "numero_cargo"
+    t.string  "caminho_photo"
+    t.integer "numero"
+  end
 
   create_table "cargos", force: true do |t|
     t.string  "nome"
@@ -23,6 +31,12 @@ ActiveRecord::Schema.define(version: 2) do
     t.string  "nome"
     t.string  "sigla"
     t.integer "numero"
+  end
+
+  create_table "votacoes", force: true do |t|
+    t.date "data"
+    t.time "hora_inicio"
+    t.time "hora_fim"
   end
 
 end
