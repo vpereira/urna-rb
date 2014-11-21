@@ -2,6 +2,7 @@
 #
 require_relative '../app/models/cargo'
 require_relative '../app/models/partido'
+require_relative '../app/models/candidato'
 
 [["PRESIDENTE",2],["GOVERNADOR",2],["SENADOR",3],["DEPUTADO FEDERAL",4],["DEPUTADO FEDERAL",4],["VEREADOR",5],["PREFEITO",2]].each do |k|
     Cargo.create :nome=>k[0],:digitos=>k[1]
@@ -18,5 +19,8 @@ end
 ].each do |k|
 
     Partido.create :numero=>k[0],:nome=>k[1],:sigla=>k[2]
+
 end
 
+
+Candidato.create :nome=>"DILMA VANA ROUSSEFF", :partido=>Partido.find_by(sigla:"PT"), :cargo=>Cargo.find_by(nome:"PRESIDENTE"), :numero=>Partido.find_by(sigla:"PT").numero
