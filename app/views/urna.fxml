@@ -50,6 +50,8 @@
                   </VBox>
                </children>
             </Pane>
+            <Label fx:id="nome_candidato" layoutX="103.0" layoutY="233.0" prefHeight="32.0" prefWidth="272.0" />
+            <Label fx:id="nome_partido" layoutX="87.0" layoutY="277.0" prefHeight="21.0" prefWidth="288.0" />
          </children>
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="412.0" styleClass="split_pane_botoes" stylesheets="@css/button_teclado.css">

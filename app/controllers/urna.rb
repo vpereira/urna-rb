@@ -77,10 +77,21 @@ class UrnaController
             # in the get_inserted_number, call the db, get the
             # answer and show it
             if input == @cargo.digitos
-              c = Candidato.where("numero = ? AND numero_cargo = ?", get_inserted_number, @cargo.numero).first
-              puts "#{c.nome}"
+              c = procura_candidato
+              popula_nome_e_partido(c)
             end
             input_next
         end
+    end
+
+    protected
+
+    def procura_candidato
+      Candidato.where("numero = ? AND numero_cargo = ?", get_inserted_number, @cargo.numero).first
+    end
+
+    def popula_nome_e_partido(candidato)
+      @nome_candidato.text =  candidato.nome
+      @nome_partido.text = candidato.partido.nome
     end
 end
