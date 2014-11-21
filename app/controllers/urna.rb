@@ -8,7 +8,7 @@ class UrnaController
     def initialize
         # TODO
         # it will be dynamic added
-        @cargo = Cargo.find(3)
+        @cargo = Cargo.find_by(nome:"PRESIDENTE")
         @cargo_label.text = @cargo.nome
         @input = 1 #first input
         @max_input = @cargo.digitos
@@ -25,7 +25,6 @@ class UrnaController
     end
 
     def input_next
-        puts "#{@input} - #{@max_input}"
         @input+=1 if @input < @max_input
         i = self.instance_variable_get("@input_#{@input}")
         i.send(:request_focus)
@@ -50,11 +49,11 @@ class UrnaController
       #@input_3
       #@input_2
       #@input_1
-      num = self.instance_variables.grep(/^@input_/).collect do |i|
+      num = self.instance_variables.grep(/^@input_[0-9]/).collect do |i|
         text_f = self.instance_variable_get(i)
         text_f.text
       end
-      num.join.to_i
+      num.reverse.join.to_i
     end
 
     # TODO
@@ -77,7 +76,10 @@ class UrnaController
             # TODO
             # in the get_inserted_number, call the db, get the
             # answer and show it
-            puts get_inserted_number if input == @cargo.digitos
+            if input == @cargo.digitos
+              c = Candidato.where("numero = ? AND numero_cargo = ?", get_inserted_number, @cargo.numero).first
+              puts "#{c.nome}"
+            end
             input_next
         end
     end
