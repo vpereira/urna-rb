@@ -34,4 +34,5 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
+  activesupport
   jdbc-sqlite3
