@@ -73,12 +73,12 @@ class UrnaController
             i = self.instance_variable_get("@input_#{@input}")
             i.send(:text=,num.to_s)
             input = self.instance_variable_get("@input")
-            # TODO
-            # in the get_inserted_number, call the db, get the
-            # answer and show it
+            # if all inputs were inserted, query the db and show the results
+            # TODO:
+            # - what to do if no record was found
             if input == @cargo.digitos
               c = procura_candidato
-              popula_nome_e_partido(c)
+              popula_nome_foto_e_partido(c)
             end
             input_next
         end
@@ -90,8 +90,9 @@ class UrnaController
       Candidato.where("numero = ? AND numero_cargo = ?", get_inserted_number, @cargo.numero).first
     end
 
-    def popula_nome_e_partido(candidato)
+    def popula_nome_foto_e_partido(candidato)
       @nome_candidato.text =  candidato.nome
       @nome_partido.text = candidato.partido.nome
+      @foto.set_image(image(candidato.photo))
     end
 end

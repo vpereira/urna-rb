@@ -10,9 +10,9 @@ end
 
 [
     [13, "Partido dos Trabalhadores", "PT"],
-    [15, "Partido da Social Democracia Brasileira", "PSDB"],
-    [45, "Partido do Movimento Democrático Brasileiro", "PMDB"],
+    [15, "Partido do Movimento Democrático Brasileiro", "PMDB"],
     [43, "Partido Verde", "PV"],
+    [45, "Partido da Social Democracia Brasileira", "PSDB"],
     [50, "Partido Socialismo e Liberdade", "PSOL"],
     [65, "Partido Comunista do Brasil", "PCdoB"],
     [70, "Partido Trabalhista do Brasil", "PTdoB"]
@@ -23,4 +23,5 @@ end
 end
 
 
-Candidato.create :nome=>"DILMA VANA ROUSSEFF", :partido=>Partido.find_by(sigla:"PT"), :cargo=>Cargo.find_by(nome:"PRESIDENTE"), :numero=>Partido.find_by(sigla:"PT").numero
+Candidato.create :nome=>"DILMA VANA ROUSSEFF", :partido=>Partido.find_by(sigla:"PT"), :cargo=>Cargo.find_by(nome:"PRESIDENTE"), :numero=>Partido.find_by(sigla:"PT").numero, :caminho_photo=>"Dilma.jpg"
+Candidato.create :nome=>"AECIO NEVES", :partido=>Partido.find_by(sigla:"PSDB"), :cargo=>Cargo.find_by(nome:"PRESIDENTE"), :numero=>Partido.find_by(sigla:"PSDB").numero, :caminho_photo=>"Aecio_Neves.jpg"

@@ -13,7 +13,6 @@ require_relative "../app/controllers/urna"
 
 module Urna
 class Urna <  JRubyFX::Application
-
     def start(args)
          with(stage, title: "Hello World!", width: 800, height: 600) do
             fxml UrnaController

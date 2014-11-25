@@ -18,7 +18,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="133.0" fitWidth="109.0" layoutX="274.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="foto" fitHeight="133.0" fitWidth="109.0" layoutX="274.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/pol1.png" />
                </image>
