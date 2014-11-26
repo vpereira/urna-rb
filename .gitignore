@@ -1,2 +1,3 @@
 tmp/*
 app/views/.jrubyfx_cache/*
+db/*.sqlite3

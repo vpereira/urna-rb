@@ -65,6 +65,7 @@ class UrnaController
         i = self.instance_variable_get("@input_#{@input}")
         i.send(:text=,"")
         input_back
+        remove_nome_foto_e_partido
     end
 
     # define the buttons and map it to the input field
@@ -94,5 +95,11 @@ class UrnaController
       @nome_candidato.text =  candidato.nome
       @nome_partido.text = candidato.partido.nome
       @foto.set_image(image(candidato.photo))
+    end
+
+    def remove_nome_foto_e_partido
+      @nome_candidato.text = ""
+      @nome_partido.text = ""
+      @foto.set_image(nil)
     end
 end
