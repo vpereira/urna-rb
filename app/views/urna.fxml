@@ -106,7 +106,7 @@
                      <HBox.margin>
                         <Insets top="30.0" />
                      </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#click_confirma" prefHeight="52.0" prefWidth="111.0" style="-fx-background-color: #0fe20f; -fx-border-color: #000000;" styleClass="base_botoes" stylesheets="@css/button_teclado.css" text="CONFIRMA">
+                  <Button fx:id="confirma" mnemonicParsing="false" onAction="#click_confirma" prefHeight="52.0" prefWidth="111.0" style="-fx-background-color: #0fe20f; -fx-border-color: #000000;" styleClass="base_botoes" stylesheets="@css/button_teclado.css" text="CONFIRMA">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin></Button>

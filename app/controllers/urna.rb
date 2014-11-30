@@ -13,6 +13,10 @@ class UrnaController
         @input = 1 #first input
         @max_input = @cargo.digitos
         @min_input = 1
+        @candidato = nil
+
+        # confirma inicializado desabilitado
+        @confirma.set_disable(true)
         if @cargo.digitos > NUMERO_MINIMO_DIGITOS
           (NUMERO_MINIMO_DIGITOS+1).upto(@cargo.digitos).each do |i|
                 t = text_field
@@ -68,6 +72,13 @@ class UrnaController
         remove_nome_foto_e_partido
     end
 
+    def click_confirma
+      if @candidato
+        @candidato.votos.create
+      end
+    end
+
+
     # define the buttons and map it to the input field
     0.upto(9).each do |num|
         define_method("click_#{num}") do
@@ -78,8 +89,9 @@ class UrnaController
             # TODO:
             # - what to do if no record was found
             if input == @cargo.digitos
-              c = procura_candidato
-              popula_nome_foto_e_partido(c)
+              @candidato = procura_candidato
+              popula_nome_foto_e_partido(@candidato) # TODO: we dont need it as param
+              @confirma.set_disable(false)
             end
             input_next
         end
@@ -101,5 +113,6 @@ class UrnaController
       @nome_candidato.text = ""
       @nome_partido.text = ""
       @foto.set_image(nil)
+      @candidato = nil
     end
 end

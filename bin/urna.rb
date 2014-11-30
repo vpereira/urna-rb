@@ -1,13 +1,12 @@
 require 'jrubyfx'
-require 'active_record'
+require_relative "../urna"
 require_relative '../lib/db'
 
 Urna::Db::init(:config=>'config/database.yml',:env=>'development')
 
 
-require_relative "../app/models/cargo"
-require_relative "../app/models/partido"
-require_relative "../app/models/candidato"
+
+
 require_relative "../app/controllers/urna"
 
 
