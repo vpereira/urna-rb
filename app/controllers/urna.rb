@@ -5,7 +5,18 @@ class UrnaController
     include JRubyFX::Controller
     fxml "urna.fxml"
     NUMERO_MINIMO_DIGITOS = 2 # o numero minimo para um cargo sao 2 digitos.
-    def initialize
+    def initialize(*args)
+
+        # vamos armazenar temporariamente o titulo de eleitor
+        # esse sera usado como semente para um PRNG seguro (openssl)
+        # IMPORTANTE
+        # definir um SALT seguro e unico
+        if args
+          # improve it
+          if args.first[:eleitor]
+            @eleitor = args.first[:eleitor]
+          end
+        end
         # TODO
         # it will be dynamic added
         @cargo = Cargo.find_by(nome:"PRESIDENTE")
