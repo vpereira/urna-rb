@@ -23,17 +23,18 @@ ActiveRecord::Schema.define(version: 4) do
   create_table "cargos", primary_key: "numero", force: true do |t|
     t.string  "nome"
     t.integer "digitos"
+    t.integer "numero_eleicao"
+  end
+
+  create_table "eleicoes", primary_key: "numero", force: true do |t|
+    t.date "data"
+    t.time "hora_inicio"
+    t.time "hora_fim"
   end
 
   create_table "partidos", primary_key: "numero", force: true do |t|
     t.string "nome"
     t.string "sigla"
-  end
-
-  create_table "votacoes", force: true do |t|
-    t.date "data"
-    t.time "hora_inicio"
-    t.time "hora_fim"
   end
 
 end

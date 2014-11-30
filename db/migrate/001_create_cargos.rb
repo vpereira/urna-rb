@@ -4,6 +4,7 @@ class CreateCargos < ActiveRecord::Migration
             t.string :nome
             t.integer :digitos
             t.integer :numero
+            t.integer :numero_eleicao
             t.primary_key :numero
         end
     end
