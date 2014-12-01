@@ -90,6 +90,7 @@ class UrnaController
         source = arg.get_source
         stage = source.get_scene.get_window
 
+        # no more cargos to be voted? So thats it!
         if @cargos.empty?
           FimController.load_into(stage)
         else
