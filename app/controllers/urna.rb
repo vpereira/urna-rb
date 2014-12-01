@@ -1,5 +1,6 @@
 require 'jrubyfx'
-fxml_root File.join(File.dirname(__FILE__),"..","views")
+require_relative 'fim'
+fxml_root File.expand_path(File.join(File.dirname(__FILE__),"..","views"))
 
 class UrnaController
     include JRubyFX::Controller
@@ -19,11 +20,6 @@ class UrnaController
           @main_stage = args.first[:main_stage]
           @cargo = @cargos.pop unless @cargos.empty?
         end
-
-        if @cargos.empty? and @cargo.nil?
-          @main_stage.set_scene(@encerra)
-        end
-
 
         @cargo_label.text = @cargo.nome
         @input = 1 #first input
@@ -93,12 +89,13 @@ class UrnaController
         @candidato.votos.create
         source = arg.get_source
         stage = source.get_scene.get_window
-        UrnaController.load_into(stage,:initialize=>[:eleitor=>@eleitor,
-          :cargos=>@cargos,:encerra=>@encerra,:main_stage=>@main_stage])
-        #stage.reload
-        #Node  source = (Node)  actionEvent.getSource();
-        #Stage stage  = (Stage) source.getScene().getWindow();
-        #stage.close();
+
+        if @cargos.empty?
+          FimController.load_into(stage)
+        else
+          UrnaController.load_into(stage,:initialize=>[:eleitor=>@eleitor,
+            :cargos=>@cargos])
+        end
       end
     end
 
