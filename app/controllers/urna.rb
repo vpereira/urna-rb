@@ -13,13 +13,18 @@ class UrnaController
         # definir um SALT seguro e unico
         if args
           # improve it
-          if args.first[:eleitor]
-            @eleitor = args.first[:eleitor]
-          end
+          @eleitor = args.first[:eleitor]
+          @cargos = args.first[:cargos]
+          @encerra = args.first[:encerra]
+          @main_stage = args.first[:main_stage]
+          @cargo = @cargos.pop unless @cargos.empty?
         end
-        # TODO
-        # it will be dynamic added
-        @cargo = Cargo.find_by(nome:"PRESIDENTE")
+
+        if @cargos.empty? and @cargo.nil?
+          @main_stage.set_scene(@encerra)
+        end
+
+
         @cargo_label.text = @cargo.nome
         @input = 1 #first input
         @max_input = @cargo.digitos
@@ -83,9 +88,17 @@ class UrnaController
         remove_nome_foto_e_partido
     end
 
-    def click_confirma
+    on :click_confirma do |arg|
       if @candidato
         @candidato.votos.create
+        source = arg.get_source
+        stage = source.get_scene.get_window
+        UrnaController.load_into(stage,:initialize=>[:eleitor=>@eleitor,
+          :cargos=>@cargos,:encerra=>@encerra,:main_stage=>@main_stage])
+        #stage.reload
+        #Node  source = (Node)  actionEvent.getSource();
+        #Stage stage  = (Stage) source.getScene().getWindow();
+        #stage.close();
       end
     end
 
