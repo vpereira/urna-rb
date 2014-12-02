@@ -1,3 +1,5 @@
+require 'bundler/setup'
+Bundler.setup
 require 'active_record'
 require_relative './lib/db'
 require_relative "./app/controllers/urna"

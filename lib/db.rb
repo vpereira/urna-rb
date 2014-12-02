@@ -1,4 +1,4 @@
-require_relative './inflector'
+require_relative 'inflector'
 module Urna
 class Db
     def self.init(params = {})

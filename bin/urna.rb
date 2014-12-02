@@ -37,11 +37,6 @@ class Urna <  JRubyFX::Application
            UrnaController.load_into(stage,:initialize=>[:eleitor=>txt1.text.to_s,
                :cargos=>cargos])
          end
-
-         #with(stage, title: "Hello World!", width: 800, height: 600) do
-         #    UrnaController
-        #    show
-        # end
     end
 end
 end
