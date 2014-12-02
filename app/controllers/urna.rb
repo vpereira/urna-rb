@@ -89,11 +89,20 @@ class UrnaController
         @candidato.votos.create
         source = arg.get_source
         stage = source.get_scene.get_window
+        # audio = new AudioClip(AudioPlayer.class.getResource("/alert.wav").toString()
+        # audio.play
+        som_confirma = audio_clip File.expand_path(File.join("file://",__FILE__,"..","..","..","sounds",
+        "botoes.wav"))
+        som_fim =  audio_clip File.expand_path(File.join("file://",__FILE__,"..","..","..","sounds",
+        "fim.wav"))
+
 
         # no more cargos to be voted? So thats it!
         if @cargos.empty?
+          som_fim.play
           FimController.load_into(stage)
         else
+          som_confirma.play
           UrnaController.load_into(stage,:initialize=>[:eleitor=>@eleitor,
             :cargos=>@cargos])
         end
