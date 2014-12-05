@@ -1,5 +1,6 @@
 class Eleitor < ActiveRecord::Base
   attr_accessor :titulo_de_eleitor
+  validates_uniqueness_of :assinatura
   # TODO
   # it should be handled by inflections
   self.table_name = "eleitores"

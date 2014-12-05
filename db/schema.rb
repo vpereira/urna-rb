@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 6) do
     t.integer "numero_eleicao"
   end
 
+  add_index "eleitores", ["assinatura"], name: "index_eleitores_on_assinatura", unique: true
+
   create_table "partidos", primary_key: "numero", force: true do |t|
     t.string "nome"
     t.string "sigla"
