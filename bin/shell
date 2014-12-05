@@ -10,12 +10,6 @@ Urna::Db::init(:config=>'config/database.yml',:env=>'development')
 
 trap("SIGINT") do
   IRB.abort
-  #irb.signal_handle
 end
-
-#catch(:IRB_EXIT) do
-#  irb.eval_input
-#end
-
 
 IRB.start
