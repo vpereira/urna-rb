@@ -131,7 +131,7 @@ class UrnaController
     protected
 
     def procura_candidato
-      Candidato.where("numero_partido = ? AND numero_cargo = ?", get_inserted_number, @cargo.numero).first
+      Candidato.procura get_inserted_number, @cargo.numero
     end
 
     def popula_nome_foto_e_partido(candidato)
