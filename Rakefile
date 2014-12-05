@@ -55,4 +55,8 @@ task :environment do
     ActiveRecord::Base.establish_connection(Rails::env.to_sym)
 end
 
+task :build do
+  sh "jrubyfx-jarify --main bin/urna.rb --name 'Urna Eletronica' urna"
+end
+
 load 'active_record/railties/databases.rake'
