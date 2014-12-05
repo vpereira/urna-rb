@@ -121,7 +121,7 @@ class UrnaController
             # - what to do if no record was found
             if input == @cargo.digitos
               @candidato = procura_candidato
-              popula_nome_foto_e_partido(@candidato) # TODO: we dont need it as param
+              popula_nome_foto_e_partido # TODO: we dont need it as param
               @confirma.set_disable(false)
             end
             input_next
@@ -134,10 +134,10 @@ class UrnaController
       Candidato.procura get_inserted_number, @cargo.numero
     end
 
-    def popula_nome_foto_e_partido(candidato)
-      @nome_candidato.text =  candidato.nome
-      @nome_partido.text = candidato.partido.nome
-      @foto.set_image(image(candidato.photo))
+    def popula_nome_foto_e_partido
+      @nome_candidato.text =  @candidato.nome
+      @nome_partido.text = @candidato.partido.nome
+      @foto.set_image(image(@candidato.photo))
     end
 
     def remove_nome_foto_e_partido
