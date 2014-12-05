@@ -11,10 +11,6 @@ class UrnaController
 
     def initialize(*args)
 
-        # vamos armazenar temporariamente o titulo de eleitor
-        # esse sera usado como semente para um PRNG seguro (openssl)
-        # IMPORTANTE
-        # definir um SALT seguro e unico
         if args
           # improve it, error handling and validation
           @eleitor = args.first[:eleitor]
@@ -32,6 +28,7 @@ class UrnaController
 
         # confirma inicializado desabilitado
         @confirma.set_disable(true)
+
         if @cargo.digitos > NUMERO_MINIMO_DIGITOS
           (NUMERO_MINIMO_DIGITOS+1).upto(@cargo.digitos).each do |i|
                 t = text_field
@@ -110,7 +107,7 @@ class UrnaController
     end
 
 
-    # define the buttons and map it to the input field
+    # define the buttons and map it to the input fields
     0.upto(9).each do |num|
         define_method("click_#{num}") do
             i = self.instance_variable_get("@input_#{@input}")
