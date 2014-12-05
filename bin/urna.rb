@@ -19,6 +19,8 @@ class Urna <  JRubyFX::Application
          txt1 = text_field
          btn1 = button "OK"
 
+         # TODO
+         # dont use Eleicao.first, but the active one
          cargos = Eleicao.first.cargos.to_a
 
 
@@ -32,9 +34,14 @@ class Urna <  JRubyFX::Application
          stage.title = "Urna Eletronica - Brasileira"
          stage.show
 
+         eleitor = Eleitor.new :titulo_de_eleitor=>txt1.text.to_s
+         # TODO
+         # dont use Eleicao.first, but the active one
+         eleitor.eleicao = Eleicao.first
+
          btn1.set_on_action  do |e|
            #puts cargo.nome
-           UrnaController.load_into(stage,:initialize=>[:eleitor=>txt1.text.to_s,
+           UrnaController.load_into(stage,:initialize=>[:eleitor=>eleitor,
                :cargos=>cargos])
          end
     end

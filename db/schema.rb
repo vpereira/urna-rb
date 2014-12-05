@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 5) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "candidatos", primary_key: "numero", force: true do |t|
     t.string  "nome"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(version: 5) do
     t.time "hora_fim"
   end
 
+  create_table "eleitores", primary_key: "numero", force: true do |t|
+    t.string  "assinatura"
+    t.integer "numero_eleicao"
+  end
+
   create_table "partidos", primary_key: "numero", force: true do |t|
     t.string "nome"
     t.string "sigla"
@@ -39,6 +44,7 @@ ActiveRecord::Schema.define(version: 5) do
 
   create_table "votos", primary_key: "numero", force: true do |t|
     t.integer "numero_candidato"
+    t.integer "numero_eleitor"
   end
 
 end

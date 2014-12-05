@@ -13,7 +13,7 @@ class UrnaController
         # IMPORTANTE
         # definir um SALT seguro e unico
         if args
-          # improve it
+          # improve it, error handling and validation
           @eleitor = args.first[:eleitor]
           @cargos = args.first[:cargos]
           @encerra = args.first[:encerra]
@@ -86,7 +86,7 @@ class UrnaController
 
     on :click_confirma do |arg|
       if @candidato
-        @candidato.votos.create
+        @candidato.votos.create(:eleitor=>@eleitor)
         source = arg.get_source
         stage = source.get_scene.get_window
         # audio = new AudioClip(AudioPlayer.class.getResource("/alert.wav").toString()
@@ -100,6 +100,7 @@ class UrnaController
         # no more cargos to be voted? So thats it!
         if @cargos.empty?
           som_fim.play
+          @eleitor.save
           FimController.load_into(stage)
         else
           som_confirma.play

@@ -6,6 +6,7 @@ module Urna
         def self.set_inflections
             ActiveSupport::Inflector.inflections(:en) do |inflect|
                 inflect.irregular 'eleicao', 'eleicoes'
+                inflect.irregular 'eleitor', 'eleitores'
             end
         end
     end
