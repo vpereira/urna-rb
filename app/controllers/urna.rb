@@ -1,11 +1,14 @@
 require 'jrubyfx'
 require_relative 'fim'
+
 fxml_root File.expand_path(File.join(File.dirname(__FILE__),"..","views"))
 
 class UrnaController
+
     include JRubyFX::Controller
     fxml "urna.fxml"
     NUMERO_MINIMO_DIGITOS = 2 # o numero minimo para um cargo sao 2 digitos.
+
     def initialize(*args)
 
         # vamos armazenar temporariamente o titulo de eleitor
@@ -62,9 +65,6 @@ class UrnaController
     # then search in the database for this record
     #
     def get_inserted_number
-      #@input_3
-      #@input_2
-      #@input_1
       num = self.instance_variables.grep(/^@input_[0-9]/).collect do |i|
         text_f = self.instance_variable_get(i)
         text_f.text
@@ -89,8 +89,7 @@ class UrnaController
         @candidato.votos.create(:eleitor=>@eleitor)
         source = arg.get_source
         stage = source.get_scene.get_window
-        # audio = new AudioClip(AudioPlayer.class.getResource("/alert.wav").toString()
-        # audio.play
+
         som_confirma = audio_clip File.expand_path(File.join("file://",__FILE__,"..","..","..","sounds",
         "botoes.wav"))
         som_fim =  audio_clip File.expand_path(File.join("file://",__FILE__,"..","..","..","sounds",

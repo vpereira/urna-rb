@@ -3,4 +3,5 @@ class Eleicao < ActiveRecord::Base
   self.table_name = "eleicoes"
   has_many :cargos, :foreign_key=>"numero_eleicao",:primary_key=>"numero"
   has_many :eleitores, :foreign_key=>"numero_eleicao",:primary_key=>"numero"
+  has_many :votos, :through=> :eleitores # handy 
 end

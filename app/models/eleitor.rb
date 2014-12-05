@@ -8,7 +8,7 @@ class Eleitor < ActiveRecord::Base
   belongs_to :eleicao, :foreign_key=>"numero_eleicao",:primary_key=>"numero"
   has_many :votos, :foreign_key=>"numero_eleitor", :primary_key=>"numero"
 
-  before_save :cria_assinatura
+  before_save :cria_assinatura, :gera_posicao
 
   def initialize(opts = {})
     @titulo_de_eleitor = opts[:titulo_de_eleitor]
@@ -17,6 +17,20 @@ class Eleitor < ActiveRecord::Base
   end
 
   private
+
+  # we insert the user in random order
+  # TODO
+  # improve it, its a prototype
+  def gera_posicao
+    r = 0
+    i = nil
+    while 1
+      r = rand(2**30 - 1)
+      next if r.zero?
+      break unless Eleitor.exists?(r)
+    end
+    self.numero = r
+  end
 
   def cria_assinatura
     v = self.votos.collect { |c| c.numero_candidato }.join("|")
