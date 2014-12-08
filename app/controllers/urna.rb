@@ -10,7 +10,6 @@ class UrnaController
     NUMERO_MINIMO_DIGITOS = 2 # o numero minimo para um cargo sao 2 digitos.
 
     def initialize(*args)
-
         if args
           # improve it, error handling and validation
           @eleitor = args.first[:eleitor]
@@ -51,7 +50,6 @@ class UrnaController
         i = self.instance_variable_get("@input_#{@input}")
         i.send(:request_focus)
     end
-
 
     def input_reset
         @input=1
