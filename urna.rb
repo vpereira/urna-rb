@@ -1,12 +1,19 @@
-require 'openssl'
+require "openssl"
 require "base64"
-require 'bundler/setup'
+require "bundler/setup"
 Bundler.setup
-require 'active_record'
-require_relative './lib/db'
-require_relative "./app/models/cargo"
-require_relative "./app/models/partido"
-require_relative "./app/models/candidato"
-require_relative "./app/models/eleicao"
-require_relative "./app/models/voto"
-require_relative "./app/models/eleitor"
+require "active_record"
+require 'jrubyfx'
+
+# add it to the load path.
+# im having problems with require_relative
+# and java classpath
+$:.unshift File.dirname(__FILE__)
+
+require "lib/db"
+require "lib/models/cargo"
+require "lib/models/partido"
+require "lib/models/candidato"
+require "lib/models/eleicao"
+require "lib/models/voto"
+require "lib/models/eleitor"

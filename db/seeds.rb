@@ -1,9 +1,6 @@
 # encoding: utf-8
 #
-require_relative '../app/models/cargo'
-require_relative '../app/models/partido'
-require_relative '../app/models/candidato'
-require_relative '../app/models/eleicao'
+require_relative '../urna'
 
 [["PRESIDENTE",2],["GOVERNADOR",2],["SENADOR",3],["DEPUTADO FEDERAL",4],["DEPUTADO FEDERAL",4],["VEREADOR",5],["PREFEITO",2]].each do |k|
     Cargo.create :nome=>k[0],:digitos=>k[1]

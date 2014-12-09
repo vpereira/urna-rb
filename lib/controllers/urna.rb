@@ -1,7 +1,7 @@
 require 'jrubyfx'
 require_relative 'fim'
 
-fxml_root File.expand_path(File.join(File.dirname(__FILE__),"..","views"))
+fxml_root File.join(File.dirname(__FILE__),"..","views"), File.expand_path(File.join("lib","views"))
 
 class UrnaController
 
@@ -51,7 +51,6 @@ class UrnaController
         i = self.instance_variable_get("@input_#{@input}")
         i.send(:request_focus)
     end
-
 
     def input_reset
         @input=1

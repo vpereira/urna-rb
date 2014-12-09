@@ -56,7 +56,9 @@ task :environment do
 end
 
 task :build do
+  sh "rm -rf urna.jar"
   sh "jrubyfx-jarify --main bin/urna.rb --name 'Urna Eletronica' urna"
+  sh "mv urna.jar bin"
 end
 
 load 'active_record/railties/databases.rake'
