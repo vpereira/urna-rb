@@ -33,7 +33,7 @@ class Eleitor < ActiveRecord::Base
   end
 
   def cria_assinatura
-    v = self.votos.collect { |c| c.numero_candidato }.join("|")
+    v = self.votos.collect { |c| c.numero_candidato }.join("")
     # TODO
     # validate the idea
     # ^^^^^^^^^^^^^^^^^
@@ -41,7 +41,8 @@ class Eleitor < ActiveRecord::Base
     # verify his vote, inserting his codigo de eleitor and candidates in the
     # right order
     # we should base64 it
-    self.assinatura = Base64.encode64(@sha256_handle.digest(@sha256_handle.digest(
-    @titulo_de_eleitor) + v))
+    self.assinatura = Base64.encode64(@sha256_handle.digest(
+      @sha256_handle.digest(@titulo_de_eleitor) + @sha256_handle.digest(v))
+    )
   end
 end

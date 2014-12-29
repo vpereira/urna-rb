@@ -10,6 +10,7 @@ class UrnaController
     NUMERO_MINIMO_DIGITOS = 2 # o numero minimo para um cargo sao 2 digitos.
 
     def initialize(*args)
+
         if args
           # improve it, error handling and validation
           @eleitor = args.first[:eleitor]
